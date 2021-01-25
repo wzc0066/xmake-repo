@@ -15,7 +15,6 @@ package("openssl")
     end)
 
     on_install("cross", function (package)
-	import("package.tools.autoconf").install(package, configs, {cxflags = "-Iinclude"})
         local target = "linux-generic32"
         if package:is_os("linux") then
             if package:is_arch("arm64") then
@@ -28,6 +27,7 @@ package("openssl")
         local buildenvs = import("package.tools.autoconf").buildenvs(package)
         os.vrunv("./Configure", configs, {envs = buildenvs})
         local makeconfigs = {CFLAGS = buildenvs.CFLAGS, ASFLAGS = buildenvs.ASFLAGS}
+	import("package.tools.autoconf").install(package, configs, {cxflags = "-I/home/zwang/.xmake/repositories/xrepo-rt/packages/o/openssl/include"})
         import("package.tools.make").install(package, makeconfigs)
     end)
 
