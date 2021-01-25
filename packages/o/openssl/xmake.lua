@@ -17,13 +17,13 @@ package("openssl")
     on_install("cross", function (package)
 	import("package.tools.autoconf").install(package, configs, {cxflags = "-Iinclude"})
         local target = "linux-generic32"
-        --if package:is_os("linux") then
-        --    if package:is_arch("arm64") then
-        --        target = "linux-aarch64"
+        if package:is_os("linux") then
+            if package:is_arch("arm64") then
+                target = "linux-aarch64"
         --    else
         --        target = "linux-armv4"
-        --    end
-        --end
+            end
+        end
         local configs = {target, "-DOPENSSL_NO_HEARTBEATS", "no-shared", "no-threads", "--prefix=" .. package:installdir()}
         local buildenvs = import("package.tools.autoconf").buildenvs(package)
         os.vrunv("./Configure", configs, {envs = buildenvs})
