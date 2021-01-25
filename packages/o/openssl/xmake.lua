@@ -15,6 +15,7 @@ package("openssl")
     end)
 
     on_install("cross", function (package)
+	import("package.tools.autoconf").install(package, configs, {cxflags = "-Iinclude"})
         local target = "linux-generic32"
         --if package:is_os("linux") then
         --    if package:is_arch("arm64") then
