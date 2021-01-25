@@ -3,10 +3,11 @@ package("zlib")
     set_homepage("http://www.zlib.net")
     set_description("A Massively Spiffy Yet Delicately Unobtrusive Compression Library")
 
-    add_urls("https://github.com/madler/zlib/archive/v$(version).tar.gz")
+    add_urls("http://117.143.63.254:9012/www/rt-smart/packages/v$(version).tar.gz")
 
-    add_versions("1.2.10", "42cd7b2bdaf1c4570e0877e61f2fdc0bce8019492431d054d3d86925e5058dc5")
-    add_versions("1.2.11", "629380c90a77b964d896ed37163f5c3a34f6e6d897311f1df2a7016355c45eff")
+    add_versions("1.2.8", "36658cb768a54c1d4dec43c3116c27ed893e88b02ecfcb44f2166f9c0b7f2a0d")
+    --add_versions("1.2.10", "42cd7b2bdaf1c4570e0877e61f2fdc0bce8019492431d054d3d86925e5058dc5")
+    --add_versions("1.2.11", "629380c90a77b964d896ed37163f5c3a34f6e6d897311f1df2a7016355c45eff")
 
     on_install("windows", function (package)
         io.gsub("win32/Makefile.msc", "%-MD", "-" .. package:config("vs_runtime"))
