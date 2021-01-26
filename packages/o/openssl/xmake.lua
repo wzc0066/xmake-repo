@@ -25,9 +25,9 @@ package("openssl")
         end
         local configs = {target, "-DOPENSSL_NO_HEARTBEATS", "no-shared", "no-threads", "--prefix=" .. package:installdir()}
         local buildenvs = import("package.tools.autoconf").buildenvs(package)
-	local inc = path.join(" -I", os.scriptdir(), "include")
+	buildenvs.CFLAGS = path.join(buildenvs.CFLAGS, " -I", os.scriptdir(), "include")
         os.vrunv("./Configure", configs, {envs = buildenvs})
-        local makeconfigs = {CFLAGS = path.join(buildenvs.CFLAGS, inc), ASFLAGS = buildenvs.ASFLAGS}
+        local makeconfigs = {CFLAGS = buildenvs.CFLAGS, ASFLAGS = buildenvs.ASFLAGS}
         import("package.tools.make").install(package, makeconfigs)
     end)
 
