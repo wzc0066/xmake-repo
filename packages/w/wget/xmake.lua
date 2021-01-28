@@ -27,5 +27,5 @@ package("wget")
     end)
 
     on_test(function (package)
-        assert(package:has_cfuncs("inflate", {includes = "zlib.h"}))
+        assert(os.isfile(path.join(package:installdir("bin"), "wget")))
     end)
