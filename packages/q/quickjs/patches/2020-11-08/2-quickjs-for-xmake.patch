@@ -1,0 +1,12 @@
+--- quickjs-2020-11-08/quickjs.c.orig   2020-11-21 14:48:11.740377718 +0800
++++ quickjs-2020-11-08/quickjs.c        2020-11-11 20:07:10.448838009 +0800
+@@ -62,7 +62,7 @@
+ 
+ #if !defined(_WIN32)
+ /* define it if printf uses the RNDN rounding mode instead of RNDNA */
+-#define CONFIG_PRINTF_RNDN
++//#define CONFIG_PRINTF_RNDN
+ #endif
+ 
+ /* define to include Atomics.* operations which depend on the OS
+
